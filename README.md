@@ -11,11 +11,12 @@ with io4dolfinx, writes `activation.xdmf` for ParaView, and checks the result.
 | `niederer.py` | Niederer et al. (2011) benchmark slab, tetrahedra, stimulus in a 1.5 mm corner cube | vertex marker as `.vtx` stimulus, `.lon` fibers and sheets (faster along the fibers); prints the activation at P1-P9 |
 
 ```sh
-export PYTHONPATH=/home/shared/src:$PYTHONPATH   # use the io4dolfinx in this repo
 python3 unit_square.py            # a few seconds
 python3 niederer.py               # about 30 s at the default --dx 0.2 mm
 mpirun -n 4 python3 niederer.py   # same files and results in parallel
 ```
+
+You first need to make sure you have installed io4dolfinx and opencarp. For example with CONDA.
 
 openCARP is taken from `$OPENCARP`, else from `PATH`, else from
 `/opt/micromamba/envs/opencarp/bin/openCARP`. It runs serially, on rank 0. Output goes
